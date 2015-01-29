@@ -11,13 +11,13 @@ object csvLineParser {
   val ColShiftStart = 3
   val ColShiftEnd = 4
   
-  def parse(file : String) {
+  def parse(file : String, callback : WorkShift => Unit) {
     val src = Source.fromFile(file)    
     for(line <- src.getLines().drop(1)) {
       val map = line.split(",")
       val ws = new WorkShift(map(ColPersonName), map(ColPersonId),  
           map(ColShiftDate), map(ColShiftStart), map(ColShiftEnd))
-      println(ws)
+      callback(ws)
     }
   }
 

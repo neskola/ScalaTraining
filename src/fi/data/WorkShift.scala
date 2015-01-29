@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat
 
 class WorkShift(person : String, personId : String, shiftDate : String, shiftStart : String, shiftEnd: String) {
   def p = person
-  def pId = personId
+  def pId = personId.toInt
   def sDate = {
     val dFormat = new SimpleDateFormat("dd.MM.yyyy")
     dFormat.parse(shiftDate)   
@@ -29,8 +29,6 @@ class WorkShift(person : String, personId : String, shiftDate : String, shiftSta
     (((eHelper - sHelper) * 60) + (sEndMinute - sStartMinute)) / 15
   }
   def sEveningTicks = {
-    var sHelper = sStartHour
-    var eHelper = sEndHour
     
     if (sEndHour <= 6 && sStartHour < 6) 
       (((sEndHour - sStartHour) * 60) + (sEndMinute - sStartMinute)) / 15          
