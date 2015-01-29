@@ -3,6 +3,10 @@ import java.util.Date
 import java.text.SimpleDateFormat
 
 class WorkShift(person : String, personId : String, shiftDate : String, shiftStart : String, shiftEnd: String) {
+  
+  val hourlyWage = 3.75
+  val eveningCompensation = 1.15
+  
   def p = person
   def pId = personId.toInt
   def sDate = {
@@ -45,13 +49,13 @@ class WorkShift(person : String, personId : String, shiftDate : String, shiftSta
     else 
       0
   }
-  
+    
   def regularPay = {
-    (sTotalTicks * 3.75) / 4 
+    (sTotalTicks * hourlyWage) / 4 
   }
   
   def eveningPay = {
-    (sEveningTicks * 1.15) / 4
+    (sEveningTicks * eveningCompensation) / 4
   }
   
   override def toString() = 
